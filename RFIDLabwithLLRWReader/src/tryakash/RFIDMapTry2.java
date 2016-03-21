@@ -179,7 +179,10 @@ public class RFIDMapTry2 extends PApplet implements LLRPEndpoint {
 					public void controlEvent(CallbackEvent event) {
 						 
 			                if (event.getAction() == ControlP5.ACTION_RELEASED) {
-			                	 stop(); // check akash
+			                	 //stop(); // check akash
+			                	 if(RUNNING_STATUS == 1){
+					                  stop();
+			                	 }
 			                	 System.exit(0);
 			                 
 			                   controlP5.remove(event.getController().getName());
@@ -269,7 +272,7 @@ public static int STATUS_DRAW = 0;
     public void draw() {
         // Draw map tiles and country markers
     	//background(0);
-    	map.draw();
+    	
     	if(STATUS_DRAW == 1){
     	 for ( String key : epcCount.keySet() ) {
     		 String tmpKey = key.toString().trim();
@@ -297,7 +300,9 @@ public static int STATUS_DRAW = 0;
     	 STATUS_DRAW = 0;
     	 //System.out.println("Done updating maps Akash Sahoo");
     	}
-//    	
+    	map.draw();
+    	
+    	
     //	System.out.println("sahoo draw");
     	//runReader();
     //	 pM = new SimplePointMarker(loc);
